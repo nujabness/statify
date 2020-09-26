@@ -1,21 +1,34 @@
 <template>
     <nb-container :style="styles.bgColorPrimary">
         <nb-grid>
-            <nb-col :style="styles.alignItemsStart, styles.mt50">
+            <nb-col :style="styles.alignItemsStart, styles.mt60">
                 <nb-row>
-                    <view>
-                        <nb-thumbnail :style="stylesObj.cardItemImage" :source="{uri: img}"/>
-                    </view>
-                    <view>
-                        <text :style="styles.colorWhite, styles.mt30, styles.ml10">{{user.display_name}}</text>
-                        <text :style="styles.colorWhite, styles.mt30, styles.ml10">{{user.email}}</text>
-                    </view>
+                    <nb-col>
+                        <nb-col :style="styles.justifyContentCenter">
+                            <view>
+                                <nb-thumbnail :style="stylesObj.cardItemImage" :source="{uri: user.images[0].url}"/>
+                            </view>
+                        </nb-col>
+                        <nb-col :style="styles.justifyContentCenter">
+                            <view :style="styles.alignItemsCenter">
+                                <text :style="styles.fontFamilyCatCafe, styles.fontSize18, styles.colorWhite">@{{user.display_name}}</text>
+                            </view>
+                        </nb-col>
+                    </nb-col>
                 </nb-row>
-                <view :style="styles.ml30">
-                    <nb-button  large success rounded :on-press="log">
-                        <text :style="styles.colorWhite">LOG</text>
-                    </nb-button>
-                </view>
+                <nb-row size="4">
+                <nb-tabs>
+                    <nb-tab heading="Top Artist">
+                        <TopArtists :topArtists="topArtists"/>
+                    </nb-tab>
+                    <nb-tab heading="Top Tracks">
+                        <TopTracks :topTracks="topTracks"/>
+                    </nb-tab>
+                    <nb-tab heading="Recent Track">
+                            <RecentTrack :recentlyPlayedTracks="recentlyPlayedTracks"/>
+                    </nb-tab>
+                    </nb-tabs>
+                </nb-row>
             </nb-col>
         </nb-grid>
     </nb-container>
@@ -24,33 +37,61 @@
 <script>
 import { Dimensions } from "react-native";
 import { MainStyleSheet } from '../shared/stylesheet'
+import DataService from "../services/http.service";
 import Store from "../store/store"
+import RecentTrack from "../components/RecentTrack";
+import TopArtists from "../components/TopArtists";
+import TopTracks from "../components/TopTracks";
 const deviceWidth = Dimensions.get("window").width;
 const deviceHeight = Dimensions.get("window").height;export default {
-        props: ['navigation'],
+    components: {TopTracks, TopArtists, RecentTrack},
+    props: ['navigation'],
         data() {
             return {
                 styles: MainStyleSheet,
+                recentlyPlayedTracks: [],
+                topArtists: [],
+                topTracks: [],
                 stylesObj: {
                     cardItemImage: {
                         resizeMode: "cover",
-                        height: deviceHeight/5.5,
-                        width: deviceWidth /2.5
+                        height: deviceHeight / 4,
+                        width: deviceWidth
                     }
                 }
             }
         },
+    mounted(){
+        this.getRecentlyPlayedTracks()
+        this.getTopArtists()
+        this.getTopTracks()
+    },
     computed:{
         user() {
             return Store.state.user
-        },
-        img() {
-            return this.user.images[0].url
         }
     },
     methods: {
-        log(){
-            console.log(this.user)
+        getRecentlyPlayedTracks(){
+            DataService.getRecentlyPlayedtracks().then(response => {
+                this.recentlyPlayedTracks = response.data.items
+            }).catch(error => {
+                console.log(error);
+            });
+        },
+        getTopArtists(){
+            DataService.getTopArtists().then(response => {
+                this.topArtists = response.data.items
+            }).catch(error => {
+                console.log(error);
+            });
+        },
+        getTopTracks(){
+            DataService.getTopTracks().then(response => {
+                this.topTracks = response.data.items
+            }).catch(error => {
+                console.log(error);
+            });
         }
     }
 }

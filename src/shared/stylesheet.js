@@ -24,8 +24,14 @@ const MainStyleSheet = StyleSheet.create({
     mt30:{
         marginTop: 30
     },
+    mt40:{
+        marginTop: 40
+    },
     mt50:{
         marginTop: 50
+    },
+    mt60:{
+        marginTop: 60
     },
     mt75:{
         marginTop: 75
@@ -144,8 +150,8 @@ const MainStyleSheet = StyleSheet.create({
     colorWhite:{
         color: '#FFFFFF'
     },
-    textColorWhite:{
-        color: '#ffffff'
+    colorGrey:{
+        color: '#A0A0A0'
     },
     fontSize15:{
         fontSize: 15
@@ -154,8 +160,15 @@ const MainStyleSheet = StyleSheet.create({
         fontSize: 18
     },
     titleFont:{
-        fontFamily: 'Montserrat',
-        fontWeight: 'bold'
+        fontFamily: 'CatCafe',
+        fontWeight: 'bold',
+        fontSize: 50
+    },
+    fontFamilyCatCafe:{
+        fontFamily: 'CatCafe',
+    },
+    height50: {
+        height: 50
     }
 });
 

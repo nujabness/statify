@@ -2,8 +2,8 @@
     <nb-container :style="styles.bgColorPrimary">
         <nb-grid>
             <nb-col :style="styles.alignItemsCenter, styles.justifyContentCenter">
-                <view :style="styles.justifyContentCenter">
-                    <text :style="styles.colorWhite">STATIFY</text>
+                <view :style="styles.justifyContentCenter, styles.height50">
+                    <text :style="styles.colorWhite, styles.titleFont">Statify</text>
                 </view>
                 <view>
                     <nb-button :style="styles.justifyContentCenter, styles.width200, styles.mt50" large success rounded :on-press="handleSpotifyLogin">
@@ -21,7 +21,7 @@ import { Entypo } from '@expo/vector-icons';
 import { MainStyleSheet } from '../shared/stylesheet'
 import * as AuthSession from 'expo-auth-session';
 import DataService from "../services/http.service";
-import {CLIENT_ID} from "../shared/constants";
+import {CLIENT_ID_SPOTIFY, SCOPE_SPOTIFY} from "../shared/constants";
 import Store from "../store/store"
 
 export default {
@@ -34,10 +34,11 @@ export default {
         }
     },
      methods: {
+
          async handleSpotifyLogin() {
              let redirectUrl = AuthSession.getRedirectUrl();
              let results = await AuthSession.startAsync({
-                 authUrl: `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUrl)}&scope=user-read-email&response_type=token`
+                 authUrl: `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID_SPOTIFY}&redirect_uri=${encodeURIComponent(redirectUrl)}&scope=${encodeURIComponent(SCOPE_SPOTIFY)}&response_type=token`
              });
              Store.commit('SET_TOKEN', results.params.access_token);
              if (results.type !== 'success') {
