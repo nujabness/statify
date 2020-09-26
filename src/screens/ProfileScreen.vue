@@ -27,13 +27,13 @@
                 </nb-row>
                 <nb-row size="4">
                     <nb-tabs>
-                        <nb-tab heading="Top Artist">
+                        <nb-tab :textStyle="styles.tabFontFamilyCatCafe" :activeTextStyle="styles.tabFontFamilyCatCafe" heading="Top Artist">
                             <TopArtists :topArtists="topArtists"/>
                         </nb-tab>
-                        <nb-tab heading="Top Tracks">
+                        <nb-tab :textStyle="styles.tabFontFamilyCatCafe" :activeTextStyle="styles.tabFontFamilyCatCafe" heading="Top Tracks">
                             <TopTracks :topTracks="topTracks"/>
                         </nb-tab>
-                        <nb-tab heading="Recent Track">
+                        <nb-tab :textStyle="styles.tabFontFamilyCatCafe" :activeTextStyle="styles.tabFontFamilyCatCafe" heading="Recent Track">
                                 <RecentTrack :recentlyPlayedTracks="recentlyPlayedTracks"/>
                         </nb-tab>
                     </nb-tabs>

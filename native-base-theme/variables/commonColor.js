@@ -130,8 +130,8 @@ export default {
   checkboxTickColor: '#fff',
 
   // Color
-  brandPrimary: platform === PLATFORM.IOS ? '#007aff' : '#3F51B5',
-  brandInfo: '#62B1F6',
+  brandPrimary: platform === PLATFORM.IOS ? '#d9534f' : '#d9534f',
+  brandInfo: '#d9534f',
   brandSuccess: '#5cb85c',
   brandDanger: '#d9534f',
   brandWarning: '#f0ad4e',
@@ -257,14 +257,14 @@ export default {
   inverseSpinnerColor: '#1A191B',
 
   // Tab
-  tabDefaultBg: platform === PLATFORM.IOS ? '#F8F8F8' : '#3F51B5',
-  topTabBarTextColor: platform === PLATFORM.IOS ? '#6b6b6b' : '#b3c7f9',
-  topTabBarActiveTextColor: platform === PLATFORM.IOS ? '#007aff' : '#fff',
-  topTabBarBorderColor: platform === PLATFORM.IOS ? '#a7a6ab' : '#fff',
-  topTabBarActiveBorderColor: platform === PLATFORM.IOS ? '#007aff' : '#fff',
+  tabDefaultBg: platform === PLATFORM.IOS ? '#000' : '#000',
+  topTabBarTextColor: platform === PLATFORM.IOS ? '#FFF' : '#FFF',
+  topTabBarActiveTextColor: platform === PLATFORM.IOS ? '#FFF' : '#FFF',
+  topTabBarBorderColor: platform === PLATFORM.IOS ? '#000' : '#000',
+  topTabBarActiveBorderColor: platform === PLATFORM.IOS ? '#FFF' : '#FFF',
 
   // Tabs
-  tabBgColor: '#F8F8F8',
+  tabBgColor: '#FFF',
   tabFontSize: 15,
 
   // Text

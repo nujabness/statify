@@ -167,6 +167,10 @@ const MainStyleSheet = StyleSheet.create({
     fontFamilyCatCafe:{
         fontFamily: 'CatCafe',
     },
+    tabFontFamilyCatCafe:{
+        fontFamily: 'CatCafe',
+        color: '#FFF'
+    },
     height50: {
         height: 50
     }
