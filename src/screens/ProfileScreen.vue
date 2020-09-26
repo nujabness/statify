@@ -9,24 +9,33 @@
                                 <nb-thumbnail :style="stylesObj.cardItemImage" :source="{uri: user.images[0].url}"/>
                             </view>
                         </nb-col>
-                        <nb-col :style="styles.justifyContentCenter">
-                            <view :style="styles.alignItemsCenter">
-                                <text :style="styles.fontFamilyCatCafe, styles.fontSize18, styles.colorWhite">@{{user.display_name}}</text>
-                            </view>
+                        <nb-col>
+                            <nb-row :style="styles.alignItemsCenter, styles.justifyContentCenter">
+                                <view>
+                                    <text :style="styles.fontFamilyCatCafe, styles.fontSize18, styles.colorWhite">@{{user.display_name}}</text>
+                                </view>
+                                <view>
+                                    <nb-button
+                                            transparent
+                                            :on-press="refresh">
+                                        <nb-icon :style="{ color: '#FFF' }" name="ios-refresh"/>
+                                    </nb-button>
+                                </view>
+                            </nb-row>
                         </nb-col>
                     </nb-col>
                 </nb-row>
                 <nb-row size="4">
-                <nb-tabs>
-                    <nb-tab heading="Top Artist">
-                        <TopArtists :topArtists="topArtists"/>
-                    </nb-tab>
-                    <nb-tab heading="Top Tracks">
-                        <TopTracks :topTracks="topTracks"/>
-                    </nb-tab>
-                    <nb-tab heading="Recent Track">
-                            <RecentTrack :recentlyPlayedTracks="recentlyPlayedTracks"/>
-                    </nb-tab>
+                    <nb-tabs>
+                        <nb-tab heading="Top Artist">
+                            <TopArtists :topArtists="topArtists"/>
+                        </nb-tab>
+                        <nb-tab heading="Top Tracks">
+                            <TopTracks :topTracks="topTracks"/>
+                        </nb-tab>
+                        <nb-tab heading="Recent Track">
+                                <RecentTrack :recentlyPlayedTracks="recentlyPlayedTracks"/>
+                        </nb-tab>
                     </nb-tabs>
                 </nb-row>
             </nb-col>
@@ -62,9 +71,7 @@ const deviceHeight = Dimensions.get("window").height;export default {
             }
         },
     mounted(){
-        this.getRecentlyPlayedTracks()
-        this.getTopArtists()
-        this.getTopTracks()
+        this.refresh()
     },
     computed:{
         user() {
@@ -72,6 +79,11 @@ const deviceHeight = Dimensions.get("window").height;export default {
         }
     },
     methods: {
+        refresh(){
+            this.getRecentlyPlayedTracks()
+            this.getTopArtists()
+            this.getTopTracks()
+        },
         getRecentlyPlayedTracks(){
             DataService.getRecentlyPlayedtracks().then(response => {
                 this.recentlyPlayedTracks = response.data.items
