@@ -1,34 +1,15 @@
 <template>
     <nb-container :style="styles.bgColorPrimary">
         <nb-grid>
-            <nb-col :style="styles.alignItemsCenter, styles.mt100">
+            <nb-col :style="styles.alignItemsCenter, styles.justifyContentCenter">
+                <view :style="styles.justifyContentCenter">
+                    <text :style="styles.colorWhite">STATIFY</text>
+                </view>
                 <view>
-                    <image :source="cardImage" class="card-item-image" :style="stylesObj.cardItemImage"/>
-                </view>
-                <nb-form :style="styles.width300">
-                    <nb-item stackedLabel>
-                        <nb-label :style="styles.colorWhite">Email</nb-label>
-                        <nb-input :style="styles.colorWhite" v-model="email"/>
-                    </nb-item>
-
-                    <nb-item stackedLabel>
-                        <nb-label :style="styles.colorWhite">Password</nb-label>
-                        <nb-input secureTextEntry="true"
-                                  :style="styles.colorWhite" v-model="password"/>
-                    </nb-item>
-                </nb-form>
-                <view v-if="!isLogin"
-                      :style="styles.alignItemsEnd, styles.width300, styles.mt3">
-                    <nb-button :on-press="login"
-                                :style="styles.mt5" full danger>
-                        <nb-text>Login</nb-text>
+                    <nb-button :style="styles.justifyContentCenter, styles.width200, styles.mt50" large success rounded :on-press="handleSpotifyLogin">
+                        <Entypo name="spotify" size="24" color="white" />
+                        <text :style="styles.colorWhite">LOG IN WITH SPOTIFY</text>
                     </nb-button>
-                    <text :on-press="goToRegisterScreen"
-                          :style="styles.colorWhite, styles.fontSize18">Register</text>
-                </view>
-                <view v-if="isLogin"
-                        :style="styles.alignItemsCenter, styles.width300, styles.mt3">
-                    <nb-spinner color="red" />
                 </view>
             </nb-col>
         </nb-grid>
@@ -36,50 +17,40 @@
 </template>
 
 <script>
-import { Dimensions } from "react-native";
+import { Entypo } from '@expo/vector-icons';
 import { MainStyleSheet } from '../shared/stylesheet'
-import cardImage from "../assets/athletics.png";
+import * as AuthSession from 'expo-auth-session';
 import DataService from "../services/http.service";
+import {CLIENT_ID} from "../shared/constants";
 import Store from "../store/store"
-const deviceWidth = Dimensions.get("window").width;
-const deviceHeight = Dimensions.get("window").height;
+
 export default {
+    components: {Entypo},
     props: ['navigation'],
     data() {
         return {
-            email: "",
-            password: "",
-            isLogin: false,
-            cardImage: cardImage,
             styles: MainStyleSheet,
-            stylesObj: {
-                cardItemImage: {
-                    resizeMode: "cover",
-                    height: deviceHeight / 5,
-                    width: deviceWidth / 2
-                }
-            }
+            didError: false
         }
     },
-    methods:{
-        login(){
-            this.isLogin = true
-            let body = {
-                email: this.email,
-                password: this.password,
-            }
-            DataService.login(body).then(response => {
-                Store.commit('SET_USER', response.data.user);
-                Store.commit('SET_TOKEN', response.data.token);
-                this.navigation.navigate("Profile");
-                this.isLogin = false
-            }).catch(error => {
-                console.log(error);
-            });
-        },
-        goToRegisterScreen() {
-            this.navigation.navigate("Register");
-        },
-    }
+     methods: {
+         async handleSpotifyLogin() {
+             let redirectUrl = AuthSession.getRedirectUrl();
+             let results = await AuthSession.startAsync({
+                 authUrl: `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUrl)}&scope=user-read-email&response_type=token`
+             });
+             Store.commit('SET_TOKEN', results.params.access_token);
+             if (results.type !== 'success') {
+                 this.didError = true;
+             } else {
+                 DataService.login().then(response => {
+                     Store.commit('SET_USER', response.data);
+                     this.navigation.navigate('Profile')
+                 }).catch(error => {
+                     console.log(error);
+                 });
+             }
+         },
+     }
 }
 </script>

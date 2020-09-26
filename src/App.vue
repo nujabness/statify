@@ -9,8 +9,8 @@
     createStackNavigator,
   } from "vue-native-router";
   import React from "react";
-  import LoginScreen from "./screens/old/LoginScreen";
-  import TestScreen from "./screens/TestScreen";
+  import LoginScreen from "./screens/LoginScreen";
+  import ProfileScreen from "./screens/ProfileScreen";
 
   const DrawerNavigator = createDrawerNavigator(
           {
@@ -20,8 +20,8 @@
               //   drawerLabel: () => null
               // }
             },
-            Test: {
-              screen: TestScreen,
+            Profile: {
+              screen: ProfileScreen,
               // navigationOptions:{
               //   drawerLabel: () => null
               // }
@@ -40,7 +40,7 @@
           {
             Drawer: DrawerNavigator,
             Login: LoginScreen,
-            Test: TestScreen
+            Profile: ProfileScreen
           },
   )
 

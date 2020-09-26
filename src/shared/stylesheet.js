@@ -39,6 +39,33 @@ const MainStyleSheet = StyleSheet.create({
     mt200:{
         marginTop: 200
     },
+    ml10: {
+        marginLeft: 10
+    },
+    ml20: {
+        marginLeft: 20
+    },
+    ml30: {
+        marginLeft: 30
+    },
+    ml50: {
+        marginLeft: 50
+    },
+    ml75: {
+        marginLeft: 75
+    },
+    ml100: {
+        marginLeft: 100
+    },
+    ml150: {
+        marginLeft: 150
+    },
+    ml200: {
+        marginLeft: 200
+    },
+    ml250: {
+        marginLeft: 250
+    },
     width50:{
         width: 50
     },
@@ -103,7 +130,7 @@ const MainStyleSheet = StyleSheet.create({
         alignContent: 'center'
     },
     bgColorPrimary:{
-        backgroundColor: '#F08080'
+        backgroundColor: '#000'
     },
     bgColorSecondary:{
         backgroundColor: '#CD5C5C'
@@ -125,6 +152,10 @@ const MainStyleSheet = StyleSheet.create({
     },
     fontSize18:{
         fontSize: 18
+    },
+    titleFont:{
+        fontFamily: 'Montserrat',
+        fontWeight: 'bold'
     }
 });
 
