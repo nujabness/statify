@@ -168,8 +168,7 @@ const MainStyleSheet = StyleSheet.create({
     fontSize18:{
         fontSize: 18
     },
-    titleFont:{
-        fontWeight: 'bold',
+    fontSize50:{
         fontSize: 50
     },
     fontFamilyCatCafe:{

@@ -3,7 +3,7 @@
         <nb-grid>
             <nb-col :style="styles.alignItemsCenter, styles.justifyContentCenter">
                 <view :style="styles.justifyContentCenter, styles.height50">
-                    <text :style="styles.fontFamilyCatCafe, styles.colorWhite, styles.titleFont">Statify</text>
+                    <text :style="styles.fontFamilyCatCafe, styles.colorWhite, styles.fontSize50">Statify</text>
                 </view>
                 <view>
                     <nb-button :style="styles.justifyContentCenter, styles.width200, styles.mt50" large rounded :on-press="handleSpotifyLogin">
