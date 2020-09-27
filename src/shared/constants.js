@@ -1,4 +1,4 @@
-export const CLIENT_ID_SPOTIFY = 'b91852cc25b04e79b697ce2c96ff981f';
+export const CLIENT_ID_SPOTIFY = '';
 export const SCOPE_SPOTIFY = 'playlist-read-private ' +
     'playlist-modify-public ' +
     'playlist-modify-private ' +
