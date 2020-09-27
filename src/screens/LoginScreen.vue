@@ -34,9 +34,9 @@ export default {
         }
     },
      methods: {
-
          async handleSpotifyLogin() {
              let redirectUrl = AuthSession.getRedirectUrl();
+             // let redirectUrl = AuthSession.getDefaultReturnUrl();
              let results = await AuthSession.startAsync({
                  authUrl: `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID_SPOTIFY}&redirect_uri=${encodeURIComponent(redirectUrl)}&scope=${encodeURIComponent(SCOPE_SPOTIFY)}&response_type=token`
              });

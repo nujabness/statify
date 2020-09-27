@@ -2,6 +2,7 @@
   "expo": {
     "name": "statify",
     "slug": "statify",
+    "scheme": "statify",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/spotify.png",
@@ -16,11 +17,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.nujabness.statify",
-      "buildNumber": "1.0.0"
-    },
     "android": {
       "package": "com.nujabness.statify",
       "versionCode": 1
