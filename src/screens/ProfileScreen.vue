@@ -6,7 +6,7 @@
                     <nb-col>
                         <nb-col :style="styles.justifyContentCenter">
                             <view>
-                                <nb-thumbnail :style="stylesObj.cardItemImage" :source="{uri: user.images[0].url}"/>
+                                <nb-thumbnail v-if="user.images.length > 0" :style="stylesObj.cardItemImage" :source="{uri: user.images[0].url}"/>
                             </view>
                         </nb-col>
                         <nb-col>
@@ -73,7 +73,7 @@ const deviceHeight = Dimensions.get("window").height;export default {
     mounted(){
         this.refresh()
     },
-    computed:{
+    computed: {
         user() {
             return Store.state.user
         }

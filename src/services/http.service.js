@@ -9,10 +9,10 @@ class DataService {
     return axiosInstance.get("https://api.spotify.com/v1/me/player/recently-played")
   }
   getTopArtists(){
-    return axiosInstance.get('https://api.spotify.com/v1/me/top/artists')
+    return axiosInstance.get('https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=30')
   }
   getTopTracks(){
-    return axiosInstance.get('https://api.spotify.com/v1/me/top/tracks')
+    return axiosInstance.get('https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=30')
   }
 }
 
