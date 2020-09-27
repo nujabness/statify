@@ -25,7 +25,7 @@
                         </nb-col>
                     </nb-col>
                 </nb-row>
-                <nb-row size="4">
+                <nb-row :size="4">
                     <nb-tabs>
                         <nb-tab :textStyle="styles.tabFontFamilyCatCafe" :activeTextStyle="styles.tabFontFamilyCatCafe" heading="Top Artist">
                             <TopArtists :topArtists="topArtists"/>

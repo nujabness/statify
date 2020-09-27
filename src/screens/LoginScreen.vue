@@ -3,12 +3,12 @@
         <nb-grid>
             <nb-col :style="styles.alignItemsCenter, styles.justifyContentCenter">
                 <view :style="styles.justifyContentCenter, styles.height50">
-                    <text :style="styles.colorWhite, styles.titleFont">Statify</text>
+                    <text :style="styles.fontFamilyCatCafe, styles.colorWhite, styles.titleFont">Statify</text>
                 </view>
                 <view>
                     <nb-button :style="styles.justifyContentCenter, styles.width200, styles.mt50" large rounded :on-press="handleSpotifyLogin">
-                        <Entypo name="spotify" size="24" color="white" />
-                        <text :style="styles.fontFamilyCatCafe, styles.colorWhite, styles.ml5, styles.textBold">LOG IN WITH SPOTIFY</text>
+                        <Entypo name="spotify" :size="24" color="#303030" />
+                        <text :style="styles.fontFamilyCatCafe, styles.colorGreyDark, styles.ml5, styles.textBold">LOG IN WITH SPOTIFY</text>
                     </nb-button>
                 </view>
             </nb-col>

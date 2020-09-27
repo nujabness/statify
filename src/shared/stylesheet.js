@@ -159,6 +159,9 @@ const MainStyleSheet = StyleSheet.create({
     colorGrey:{
         color: '#A0A0A0'
     },
+    colorGreyDark:{
+        color: '#303030'
+    },
     fontSize15:{
         fontSize: 15
     },
@@ -166,7 +169,6 @@ const MainStyleSheet = StyleSheet.create({
         fontSize: 18
     },
     titleFont:{
-        fontFamily: 'CatCafe',
         fontWeight: 'bold',
         fontSize: 50
     },
