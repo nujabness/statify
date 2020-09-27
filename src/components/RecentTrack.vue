@@ -1,6 +1,6 @@
 <template>
-    <nb-container :style="styles.bgColorPrimary">
-        <scroll-view :style="styles.bgColorPrimary">
+    <nb-container :style="styles.bgColorBlack">
+        <scroll-view>
             <nb-col>
                 <nb-list-item v-for="item in recentlyPlayedTracks" thumbnail>
                     <nb-left>

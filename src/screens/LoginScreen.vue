@@ -1,14 +1,14 @@
 <template>
-    <nb-container :style="styles.bgColorPrimary">
+    <nb-container :style="styles.bgColorBlack">
         <nb-grid>
             <nb-col :style="styles.alignItemsCenter, styles.justifyContentCenter">
                 <view :style="styles.justifyContentCenter, styles.height50">
                     <text :style="styles.colorWhite, styles.titleFont">Statify</text>
                 </view>
                 <view>
-                    <nb-button :style="styles.justifyContentCenter, styles.width200, styles.mt50" large success rounded :on-press="handleSpotifyLogin">
+                    <nb-button :style="styles.justifyContentCenter, styles.width200, styles.mt50" large rounded :on-press="handleSpotifyLogin">
                         <Entypo name="spotify" size="24" color="white" />
-                        <text :style="styles.colorWhite">LOG IN WITH SPOTIFY</text>
+                        <text :style="styles.fontFamilyCatCafe, styles.colorWhite, styles.ml5, styles.textBold">LOG IN WITH SPOTIFY</text>
                     </nb-button>
                 </view>
             </nb-col>

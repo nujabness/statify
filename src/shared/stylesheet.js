@@ -45,6 +45,9 @@ const MainStyleSheet = StyleSheet.create({
     mt200:{
         marginTop: 200
     },
+    ml5: {
+        marginLeft: 5
+    },
     ml10: {
         marginLeft: 10
     },
@@ -136,19 +139,22 @@ const MainStyleSheet = StyleSheet.create({
         alignContent: 'center'
     },
     bgColorPrimary:{
-        backgroundColor: '#000'
+        backgroundColor: '#ffc0cb'
     },
     bgColorSecondary:{
         backgroundColor: '#CD5C5C'
     },
+    bgColorBlack:{
+        backgroundColor: '#000'
+    },
     colorPrimary:{
-        color: '#F08080'
+        color: '#ffc0cb'
     },
     colorSecondary:{
         color: '#CD5C5C'
     },
     colorWhite:{
-        color: '#FFFFFF'
+        color: '#FFF'
     },
     colorGrey:{
         color: '#A0A0A0'
@@ -173,6 +179,9 @@ const MainStyleSheet = StyleSheet.create({
     },
     height50: {
         height: 50
+    },
+    textBold:{
+        fontWeight: 'bold'
     }
 });
 

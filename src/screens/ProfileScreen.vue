@@ -1,5 +1,5 @@
 <template>
-    <nb-container :style="styles.bgColorPrimary">
+    <nb-container :style="styles.bgColorBlack">
         <nb-grid>
             <nb-col :style="styles.alignItemsStart, styles.mt60">
                 <nb-row>

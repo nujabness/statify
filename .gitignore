@@ -8,8 +8,8 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+src/shared/constants.js
 
 # macOS
 .DS_Store
 
-src/shared/constants.js
